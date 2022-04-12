@@ -1,0 +1,36 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:14.2
+    ports:
+      - 5432:5432
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  kito:
+    build:
+      dockerfile: ./Dockerfile
+      context: ./kito
+    ports:
+      - 8000:8000
+    volumes:
+      - ./kito:/var/kito
+    depends_on:
+      - db
+
+  # nginx:
+  #     build:
+  #       dockerfile: ./Dockerfile
+  #       context: ./nginx
+  #     ports:
+  #       - 80:80
+  #     depends_on:
+  #       - kito
+
+volumes:
+  dbdata:
