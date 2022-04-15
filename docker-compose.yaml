@@ -23,14 +23,20 @@ services:
     depends_on:
       - db
 
-  # nginx:
-  #     build:
-  #       dockerfile: ./Dockerfile
-  #       context: ./nginx
-  #     ports:
-  #       - 80:80
-  #     depends_on:
-  #       - kito
+
+  nginx:
+    build:
+      dockerfile: ./Dockerfile
+      context: ./nginx
+    ports:
+      - 80:80
+    volumes:
+      - static_files:/var/nginx
+    depends_on:
+      - kito
+
+
 
 volumes:
   dbdata:
+  static_files:
