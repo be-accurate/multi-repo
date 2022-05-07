@@ -1,7 +1,7 @@
 #!/bin/bash
 
-KITO_URL=https://github.com/be-accurate/kito.git
-NGINX_URL=https://github.com/be-accurate/nginx.git
+KITO_URL=git@github.com:be-accurate/kito.git
+NGINX_URL=git@github.com:be-accurate/nginx.git
 
 KITO_DIR=kito
 NGINX_DIR=nginx
